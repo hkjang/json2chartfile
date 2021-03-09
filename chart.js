@@ -30,13 +30,13 @@ app.post('/chart', function (req, res) {
         }
     }
     cjs.makeChart(lineConfig)
-    .then(res => {
+    .then(resp => {
       cjs.drawChart()
       cjs.toFile('/data/html/line.png')
         .then(_ => {
             opn('line.png');
             res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
-            res.end({result : 'done'});
+            res.end(resp);
         })
     })
 });
