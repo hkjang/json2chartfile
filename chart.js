@@ -17,14 +17,14 @@ var labels = req.body.results[0].data.map(function(e) {
 });
 var data = req.body.results[0].data.map(function(e) {
    return e.ratio;
-});;
+});
 
 const lineConfig = {
     type: 'line',
    data: {
       labels: labels,
       datasets: [{
-         label: 'Naver Trend',
+         label: req.body.label +  '네이버트렌드',
          data: data,
          backgroundColor: 'rgba(0, 119, 204, 0.3)'
       }]
@@ -46,6 +46,7 @@ res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
        
 
 });
+
 
 app.listen(3002, function () {
   console.log('http://127.0.0.1:3002/chart app listening on port 3002!');
